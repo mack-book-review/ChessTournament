@@ -45,14 +45,14 @@ class Player():
         the Player model;  each field attributes is randomized
         '''
         
-        male_first_names = ["Sam","Tom","Alexander","Bill","Jim","Harold","Mark","Paul","Winston","Travis","Ronald","George","Joe","Steve","Bob","Albert","Max","Nelson","Chris","Larry","Yuri","Oleg","Boris"]
-        female_first_names = ["Sharon","Angela","Sally","Tammy","Darla","Daria","Lisa","Mary","Mariela","Mariana","Bianka","Tatiana","Natasha","Natalie","Mona","Madeleine","Alexandra","Veronica","Francesca"]
-        last_names = ["Wachowski","Sanderson","Klein","Stevenson","Clinton","Hillburg","Steele","Pakman","Reed","Churchill","Molotov","Medvedev","Stanton","Lee"]
+        male_first_names = ["Peter","Bruce","Greg","Sam","Austin","Tom","Alexander","Bill","Jim","Harold","Mark","Paul","Winston","Travis","Ronald","George","Joe","Steve","Bob","Albert","Max","Nelson","Chris","Larry","Yuri","Oleg","Boris","John","Isaac","David","Stanley","Eric","Mitchell","Allen","Michael","Nicholas","Ivan","Goran","Frank","Nick","Zack","Reggie","Dax","Mack"]
+        female_first_names = ["Valeriy","Olga","Samantha","Evelyn","Clara","Michelle","Andrea", "Sharon","Angela","Sally","Tammy","Darla","Daria","Lisa","Mary","Mariela","Mariana","Bianka","Tatiana","Natasha","Natalie","Mona","Madeleine","Paula","Cassandra","Patricia","Arielle","Magdalena","Elena","Margaret","Alexandra","Veronica","Francesca","Hailey","Barbara","Jackie","Grace","Lea","Tara"]
+        last_names = ["Dmytryk","Jeffries","Burns","Zimmerman","Black","Greene","Watson","Ellis","Gilbert","Isaacson","Romanov","Harris","Dillinger","Wachowski","Sanderson","Klein","Stevenson","Clinton","Hillburg","Steele","Pakman","Reed","Churchill","Molotov","Medvedev","Stanton","Lee","Erickson","Walton","Scott","Lincoln","Chamberlain","Chopin","Samuelson","Butler","Dailey","Finnigan","McGregor","McCloud","O'Malley","O'Hair","Daniels","Frederickson","Lehman","Sikorski","Yu","Yang","Wong"]
         sex = random.choice(["Male","Female"])
         first_name = random.choice(male_first_names) if sex == "Male" else random.choice(female_first_names)
         last_name = random.choice(last_names)
         rating = random.randint(1,500)
-        random_datetime = datetime.datetime(year=random.randint(1980,2001),month=random.randint(1,12),day=random.randint(1,27))
+        random_datetime = datetime.datetime(year=random.randint(1960,2001),month=random.randint(1,12),day=random.randint(1,27))
         dob_string = random_datetime.strftime(Player.DEFAULT_DATE_FORMAT_STRING)
         return {
             "last_name": last_name,

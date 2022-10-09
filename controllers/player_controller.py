@@ -11,14 +11,15 @@ class PlayerController():
             Sorts a list of Player model instances
             based on their relative ratings
         '''
-        pass
+        return sorted(player_list,key=lambda p: p.rating)
+    
     
     def sort_players_alphabetically(self,player_list):
         '''
             Sorts a list of Player model instances alphabetically
             based on their last names
         '''
-        pass
+        return sorted(player_list,key=lambda p: p.last_name)
         
     def add_multiple_players(self,json_data):
         '''

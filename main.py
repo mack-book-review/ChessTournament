@@ -45,11 +45,12 @@ def main():
     playerController.add_multiple_players([Player.GenerateRandomPlayerJSON() for i in range(10)])
     #players = [Player.GenerateRandomPlayer() for i in range(10)]
     players = playerController.get_all_players()
+    sorted_players = playerController.sort_players_alphabetically(players)
     #results1 = playerController.search_players_by_field_values(**{"sex":"Female"})
-    print("All Players:", players)
+    print("All Players:", sorted_players)
     #print("Search Results:", results1)
     playerView = PlayerView()
-    playerView.show_players(players)
+    playerView.show_players(sorted_players)
 
 if __name__ == "__main__":
     main()
