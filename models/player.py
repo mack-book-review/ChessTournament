@@ -2,7 +2,7 @@ import datetime, random
 from tinydb import TinyDB
 
 class Player():
-    ID = 0 
+    COUNT = 0 
     DEFAULT_DATE_FORMAT_STRING = "%d %B, %Y"
     
     @classmethod
@@ -73,7 +73,7 @@ class Player():
         return new_player
         
     def __init__(self,**kwargs):
-        self.id = Player.ID
+        self.id = Player.COUNT
         
         self.model_name = "player"
         
@@ -87,7 +87,7 @@ class Player():
         self.dob = datetime.datetime.strptime(kwargs["dob"],"%d %B, %Y")
         self.sex = kwargs["sex"]
         self.rating = kwargs["rating"]
-        Player.ID += 1
+        Player.COUNT += 1
     
     #check if record already exists
     #add try catch statement
