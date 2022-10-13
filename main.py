@@ -1,5 +1,6 @@
 from views.player_view import PlayerView 
 from controllers.player_controller import PlayerController
+from controllers.tournament_controller import TournamentController
 from models.player import Player 
 from tinydb import TinyDB 
 import datetime 
@@ -51,6 +52,9 @@ def main():
     #print("Search Results:", results1)
     playerView = PlayerView()
     playerView.show_players(sorted_players)
+    
+    tournamentController = TournamentController()
+    
 
 if __name__ == "__main__":
     main()

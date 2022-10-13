@@ -1,15 +1,42 @@
-from tracemalloc import start
+
 from models.tournament import Tournament
 from models.round import Round
 from models.player import Player 
-
 from tinydb import TinyDB,Query
 from controllers.player_controller import PlayerController
 import datetime
+from constants import *
+from views.tournament_view import TournamentView
 class TournamentController():
-    DEFAULT_DATE_FORMAT_STRING = "%d %B, %Y"
 
     def __init__(self):
+        self.db = TinyDB('db.json')
+        self.tournaments_table = self.db.table('tournaments')
+        self.tournament_view = TournamentView()
+    
+    def show_all_tournaments(self):
+        query = Query()
+        tournaments_json = self.tournaments_table.search(query.venue.exists())
+        tournaments = [Tournament.Unserialize(**tournament_json) for tournament_json in tournaments_json]
+        self.tournament_view.show_tournaments(tournaments)
+        
+    def update_tournament(self):
+        pass  
+    
+    def delete_tournament(self):
+        pass
+    
+    def create_tournament(self):
+        data = self.tournament_view.get_tournament_configuration_data_from_user()
+        new_tournament = Tournament(
+            name=data["name"],
+            venue=data["venue"],
+            dates=data["dates"],
+            time_control=data["time_control"],
+            description=data["description"])
+        new_tournament.save()
+    
+    def start(self):
         db = TinyDB('db.json')
         self.players_table = db.table('players')
         self.tournament = None
