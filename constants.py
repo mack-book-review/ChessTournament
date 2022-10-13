@@ -1,1 +1,0 @@
-DEFAULT_DATE_FORMAT_STRING = "%d %B, %Y"
