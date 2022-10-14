@@ -1,4 +1,7 @@
 # Chess Tournament Organizer v1.0.0
+
+![https://www.publicdomainpictures.net/en/browse-author.php?a=8245](/assets/chess_pieces.jpeg "Chess Pieces by George Hodan")
+
 ***
 # Intro
 The Chess Tournament Organizer is an app designed to illustrate the MVC design pattern.  The project is divided into three main components: models, views, and controllers.  The primary controller, the AppController, provides the entry point for the program.  In order to run the program, simply run "python src/main.py"
