@@ -39,9 +39,9 @@ This option will generate players with random names, date of births, and ranking
 
 # MVC Components
 
-| Component | Modules |
-| --------- | player.py, tournamnet.py, round.py, match.py |
-| Models | ------- |
+| Component | Modules                                      |
+| --------- | -------------------------------------------- |
+| Models | player.py, tournamnet.py, round.py, match.py |
 | Views | app_view.py, player_view.py, tournament_view.py |
 | Controllers | appcontroller.py, player_controller.py, tournament_controller.py |
 
