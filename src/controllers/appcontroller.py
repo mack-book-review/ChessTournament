@@ -1,13 +1,21 @@
+#import views
 from views.app_view import AppView 
 from views.player_view import PlayerView
-from constants import * 
-from controllers.player_controller import PlayerController 
+from views.tournament_view import TournamentView 
 
+#import sub-controllers
+from controllers.player_controller import PlayerController 
+from controllers.tournament_controller import TournamentController
+
+#other imports
+from constants import * 
 class AppController():
     def __init__(self):
         self.appView = AppView()
         self.playerController = PlayerController()
+        self.tournamentController = TournamentController()
         self.playerView = PlayerView()
+        self.tournamentView = TournamentView()
         
     def process_user_menu_choice(self,user_choice):
         adjusted_choice = user_choice - 1
@@ -38,8 +46,17 @@ class AppController():
                 print("You have chosen:",MENU_OPTIONS[adjusted_choice],"...")
                 number_players = self.playerView.prompt_for_number_of_random_players()
                 self.playerController.add_random_players(number_players)
-            case 7:
+            case 7:  #list all tournaments
                 print("You have chosen:",MENU_OPTIONS[adjusted_choice],"...")
+                tournaments = self.tournamentController.get_all_tournament_records()
+                self.tournamentView.show_tournaments(tournaments)
+            case 10: #start a new tournament
+                print("You have chosen:",MENU_OPTIONS[adjusted_choice],"...")
+                data = self.tournamentView.get_tournament_configuration_data_from_user()
+                print(data)
+                self.tournamentController.create_tournament(**data)
+            case 11: #delete all tournaments
+                self.tournamentController.delete_all_tournaments()
             case _:
                 print("Choice not recognized")
     

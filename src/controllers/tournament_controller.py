@@ -16,19 +16,16 @@ class TournamentController():
         self.tournaments_table = self.db.table('tournaments')
         self.tournament_view = TournamentView()
     
-    def show_all_tournaments(self):
+    def get_all_tournament_records(self):
         query = Query()
         tournaments_json = self.tournaments_table.search(query.venue.exists())
-        print(tournaments_json)
-        tournaments = [Tournament.Unserialize(**tournament_json) for tournament_json in tournaments_json]
-        self.tournament_view.show_tournaments(tournaments)
+        return [Tournament.Unserialize(**tournament_json) for tournament_json in tournaments_json]
         
     def update_tournament(self,tournament,updated_json):
         q = Query()
         self.db.upsert(updated_json,q.venue.one_of([tournament.venue]))
     
-    def create_tournament(self):
-        data = self.tournament_view.get_tournament_configuration_data_from_user()
+    def create_tournament(self,**data):
         new_tournament = Tournament(
             name=data["name"],
             venue=data["venue"],
@@ -44,10 +41,9 @@ class TournamentController():
         all_tournaments = [Tournament.Unserialize(**tournament_json) for tournament_json in tournaments_json]
         self.delete_tournaments(all_tournaments)
         
-    def delete_tournaments(self,tournaments):
-        to_remove = [t.doc_id for t in tournaments]
-        self.tournaments_table.remove(doc_ids=to_remove)
-    
+    def delete_all_tournaments(self):
+        self.tournaments_table.truncate()
+        
     def delete_tournament(self,tournament):
         to_remove = [tournament.doc_id]
         self.tournaments_table.remove(doc_ids=to_remove)

@@ -11,5 +11,5 @@ MENU_OPTIONS = [
     "List all rounds in a tournament",
     "List all matches in a tournament",
     "Start a tournament",
-    
+    "Delete all tournaments"
 ]

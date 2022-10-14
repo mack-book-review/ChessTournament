@@ -13,7 +13,7 @@ class AppView():
     
     def get_user_menu_choice(self):
         user_choice = int(input(f"Choose a menu options [1-{len(MENU_OPTIONS)}]:"))
-        while user_choice not in range(1,len(MENU_OPTIONS)):
+        while user_choice not in range(1,len(MENU_OPTIONS)+1):
             print("Invalid choice")
             user_choice = int(input(f"Choose a menu options [1-{len(MENU_OPTIONS)}]:"))
         return user_choice

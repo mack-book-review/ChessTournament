@@ -1,7 +1,7 @@
 from enum import Enum 
-from tinydb import TinyDB
+from tinydb import TinyDB,Query
 import datetime 
-from ..constants import *
+from constants import *
 
 class TimeControl(Enum):
     BULLET = "Bullet"
@@ -61,7 +61,9 @@ class Tournament():
             the 'tournaments' table in the TinyDB database
         '''
         db = TinyDB('db.json')
+        query = Query()
         tournaments_table = db.table('tournaments')
         self.doc_id = tournaments_table.insert(self.serialize()) 
+        tournaments_table.upsert({"doc_id":self.doc_id},query.name==self.name)
     
     

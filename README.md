@@ -4,6 +4,9 @@
 The Chess Tournament Organizer is an app designed to illustrate the MVC design pattern.  The project is divided into three main components: models, views, and controllers.  The primary controller, the AppController, provides the entry point for the program.  In order to run the program, simply run "python src/main.py"
 
 Each of the components are independent of each other, avoiding tight coupling and allowing clear separation of duties by adhering to the single responsibility principle.
+
+The Python code here conforms to PEP8 standards.  Before running the app, be sure to setup a virtual environment and install all the packages listed in the requirements.txt file.
+
 # Main Menu 
 1. List all players alphabetically
 2. List all players by ranking
