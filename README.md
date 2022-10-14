@@ -37,6 +37,16 @@ This option will delete all players in the database.
 
 This option will generate players with random names, date of births, and rankings.  It's a useful starting point for testing and experimenting with the app.
 
+# MVC Components
+
+| Component | Modules |
+| --------- | player.py, tournamnet.py, round.py, match.py |
+| Models | ------- |
+| Views | app_view.py, player_view.py, tournament_view.py |
+| Controllers | appcontroller.py, player_controller.py, tournament_controller.py |
+
+
+
 
 
 
