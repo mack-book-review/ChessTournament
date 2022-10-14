@@ -22,18 +22,18 @@ The Python code here conforms to PEP8 standards.  Before running the app, be sur
 9. [List all matches in a tournament](#option9)
 10. [Start a tournament](#option10)
 
-## 1. List all players alphabetically[option1]
+## 1. List all players alphabetically
 
 This option will list all player across all tournaments in alphabetical order.
-## 2. List all players by rank[option2]
+## 2. List all players by rank
 
 This option will list all player across all tournaments according to rank
 
-## 5. Delete all players[option5]
+## 5. Delete all players
 
 This option will delete all players in the database.
 
-## 6. Generate random players[option6]
+## 6. Generate random players
 
 This option will generate players with random names, date of births, and rankings.  It's a useful starting point for testing and experimenting with the app.
 
