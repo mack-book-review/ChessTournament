@@ -11,12 +11,12 @@ Each of the components are independent of each other, avoiding tight coupling an
 The Python code here conforms to PEP8 standards.  Before running the app, be sure to setup a virtual environment and install all the packages listed in the requirements.txt file.
 
 # Main Menu 
-1. List all players alphabetically (#option1)
-2. List all players by ranking (#option2)
+1. [List all players alphabetically] (#option1)
+2. [List all players by ranking] (#option2)
 3. List all players in a tournament alphabetically
 4. List all players in a tournament by ranking",
-5. Delete all players (#option5)
-6. Generate random players (#option6)
+5. [Delete all players] (#option5)
+6. [Generate random players] (#option6)
 7. List all tournaments
 8. List all rounds in a tournament
 9. List all matches in a tournament
