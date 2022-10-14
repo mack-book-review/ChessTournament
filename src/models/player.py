@@ -1,6 +1,6 @@
 import datetime, random
 from tinydb import TinyDB
-from ..constants import * 
+from constants import * 
 
 class Player():
     COUNT = 0 

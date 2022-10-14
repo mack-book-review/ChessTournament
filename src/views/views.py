@@ -1,13 +1,5 @@
 
-def show_main_menu():
-    print("1) List all players alphabetically")
-    print("2) List all players by ranking")
-    print("3) List all players in a tournament alphabetically")
-    print("4) List all players in a tournament by ranking") 
-    print("5) List all tournaments")
-    print("6) List all rounds in a tournament")
-    print("7) List all matches in a tournament")
-    print("8) Start a tournament")
+
     
 def input_tournament_results(tournament, round):
     pass

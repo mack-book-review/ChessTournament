@@ -61,6 +61,13 @@ class PlayerController():
         players = [Player.Unserialize(**json) for json in players_json]
         return players
     
+    def add_random_players(self,number_of_players):
+        print(f"Adding {number_of_players} random players")
+        for i in range(number_of_players):
+            new_player = Player.GenerateRandomPlayer()
+            new_player.save()
+        print("Finished adding new players.")
+    
     def get_player_by_id(self,player_id):
         pass
     
@@ -96,3 +103,8 @@ class PlayerController():
     
     def delete_player(self,player_id):
         pass
+    
+    def delete_all_players(self):
+        self.player_table.truncate()
+    
+    
