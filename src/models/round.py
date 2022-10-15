@@ -33,7 +33,6 @@ class Round():
         }
         
     def add_match(self,pairing,score1,score2):
-        self.matches.append(
-            [pairing[0],score1],
-            [pairing[1],score2])
+        self.matches.append(([pairing[0],score1],
+            [pairing[1],score2]))
         

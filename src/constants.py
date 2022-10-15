@@ -10,6 +10,7 @@ MENU_OPTIONS = [
     "List all tournaments",
     "List all rounds in a tournament",
     "List all matches in a tournament",
-    "Start a tournament",
+    "Configure a tournament setup",
+    "Start and run a tournament",
     "Delete all tournaments"
 ]

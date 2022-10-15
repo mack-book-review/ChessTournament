@@ -50,12 +50,15 @@ class AppController():
                 print("You have chosen:",MENU_OPTIONS[adjusted_choice],"...")
                 tournaments = self.tournamentController.get_all_tournament_records()
                 self.tournamentView.show_tournaments(tournaments)
-            case 10: #start a new tournament
+            case 10: #configure a new tournament setup
                 print("You have chosen:",MENU_OPTIONS[adjusted_choice],"...")
                 data = self.tournamentView.get_tournament_configuration_data_from_user()
                 print(data)
                 self.tournamentController.create_tournament(**data)
-            case 11: #delete all tournaments
+            case 11: #start and run a tournament
+                self.tournamentController.setup_tournament()
+                self.tournamentController.run()
+            case 12: #delete all tournaments
                 self.tournamentController.delete_all_tournaments()
             case _:
                 print("Choice not recognized")
