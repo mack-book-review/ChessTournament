@@ -14,7 +14,7 @@ class TournamentController():
     def __init__(self):
         self.db = TinyDB('db.json')
         self.tournaments_table = self.db.table('tournaments')
-        self.tournament_view = TournamentView()
+        self.tournamentView = TournamentView()
     
     def get_all_tournament_records(self):
         query = Query()
@@ -55,13 +55,13 @@ class TournamentController():
         self.initialize_tournament()
         self.playerController = PlayerController()
      
-        self.players = []
+        self.tournament.players = []
         response = input("Would you like to add players manually [y/n]?")
         if response == "n":
             for i in range(8):
                 new_player = Player.GenerateRandomPlayer()
                 new_player.save()
-                self.players.append(new_player)
+                self.tournament.players.append(new_player)
         else:
             response = int(input("Would you like to add (1) new players or (2) existing players?"))
             if response == 1:
@@ -70,21 +70,24 @@ class TournamentController():
                 self.add_existing_players_manually()
             
         self.point_dictionary = {}
-        for player in self.players:
+        for player in self.tournament.players:
             self.point_dictionary[player] = 0
             
-        self.rounds = []
+        self.tournament.rounds = []
         self.pairings = []
         self.current_round = None
         self.current_round_number = 1
         
-        
+    
+    #todo: allow for date entries to be skipped for single-day tournament
+    #validate that dates are within proper ranges
     def set_current_round(self):
         print(f"=========== Round {self.current_round_number} Configuration ===========")
         print("Let's input information for Round " + str(self.current_round_number))
         start_date_string = input("Enter the round start date string: ")
         end_date_string = input("Enter the round end date string: ")
         
+            
         start_date = datetime.datetime.strptime(start_date_string,DEFAULT_DATE_FORMAT_STRING)
         end_date = datetime.datetime.strptime(end_date_string,DEFAULT_DATE_FORMAT_STRING)
 
@@ -94,12 +97,14 @@ class TournamentController():
     def run(self):
         while self.current_round_number < self.tournament.number_rounds:
             self.run_next_round()
+        self.tournament.save()
+    
             
     def run_next_round(self):
         self.set_current_round()
         self.generate_pairings()
         self.input_current_round_results()
-        self.rounds.append(self.current_round)
+        self.tournament.rounds.append(self.current_round)
         self.current_round_number += 1
         
     def initialize_tournament(self):
@@ -154,17 +159,31 @@ class TournamentController():
     def sort_players_by_points(self):
        return [item[0] for item in sorted(self.point_dictionary.items(),key=lambda item: item[1])]
     
+            
     def input_current_round_results(self):
-        #todo: maybe show the pairings based on rank and points to verify that the algo is working
         print("===== Let's enter the final scores for this round ========")
+        self.tournamentView.print_all_pairings_summary(self.pairings,self.point_dictionary)
+            
+        match_num = 1
         for pairing in self.pairings:
-            player1_fullname = pairing[0].first_name + " " + pairing[0].last_name
-            player2_fullname = pairing[1].first_name + " " + pairing[1].last_name
+            player1_fullname = pairing[0].get_full_name()
+            player2_fullname = pairing[1].get_full_name()
 
-            print(f"Let's enter final scores for the match between {player1_fullname} and {player2_fullname}")
-            score1 = int(input("Enter score for Player " + str(pairing[0].first_name) + " " + str(pairing[0].last_name) + ":"))
-            score2 = int(input("Enter score for Player " + str(pairing[1].first_name) + " " + str(pairing[1].last_name) + ":"))
+            print(f"Let's enter final scores for Match {match_num} between {player1_fullname} and {player2_fullname}")
+            score1 = float(input("Enter score for  Player " + player1_fullname  + ":"))
+            score2 = float(input("Enter score for  Player " + player2_fullname + ":"))
             self.point_dictionary[pairing[0]] += score1
             self.point_dictionary[pairing[1]] += score2
             self.current_round.add_match(pairing,score1,score2)
+            match_num += 1
+            print()
+            
+        response = input("Would you like to review the final scores for each match [y/n]?").lower()
+        while response not in ["y","n"]:
+            print("Invalid input")
+            response = input("Would you like to review the final scores for each match [y/n]?").lower()
+
+        if response == "y":
+            self.tournamentView.print_all_pairings_summary(self.pairings,self.point_dictionary)
+
             

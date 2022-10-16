@@ -29,6 +29,15 @@ This option will list all player across all tournaments in alphabetical order.
 
 This option will list all player across all tournaments according to rank
 
+## 3. List all players in a tournament alphabetically
+
+This option will list all the players in a tournament alphabetically
+
+## 4. List all players in a tournament by ranking
+
+This option will list all the players in a tournament by rank
+
+
 ## 5. Delete all players
 
 This option will delete all players in the database.
@@ -36,6 +45,32 @@ This option will delete all players in the database.
 ## 6. Generate random players
 
 This option will generate players with random names, date of births, and rankings.  It's a useful starting point for testing and experimenting with the app.
+
+## 7. Shows all tournaments 
+
+This option will provide general meta-data for each tournament in the database, excluding round and match information for the tournaments.  That is, it will show the name of the tournament, its venue, and its dates but not the results of each match or round.
+
+## 8. List rounds in a tournament
+
+This option will provide information about each round in a tournament, including its number, start date, and end date
+
+## 9. List matches in a tournament
+
+This option will provide information about each match in a tournament, including its associated round, the players involved, and the final score for each player
+
+## 10. Configure and setup a tournament
+
+This option will allow the user to configure and set up a tournament by inputting basic meta-data (i.e. name, venue, and dates) but will not require the user to enter per-match or per-round information
+
+## 10. Start and run a tournament
+
+This option will allow the user to start a tournament and run it to completion, which will require the user to enter data for each match and each round.
+
+## 11. Delete all tournaments
+
+This option will allow the user to delete all tournament information
+
+
 
 # MVC Components
 

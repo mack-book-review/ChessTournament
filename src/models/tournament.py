@@ -38,6 +38,7 @@ class Tournament():
     def __str__(self):
         return f"{self.name} at {self.venue} from {self.dates[0].strftime(DEFAULT_DATE_FORMAT_STRING)} to {self.dates[1].strftime(DEFAULT_DATE_FORMAT_STRING)}"
         
+    #todo: check if the record exists; if so, use upsert
     def serialize(self):
         serialized_rounds = [round.serialize() for round in self.rounds]
         serialized_players = [player.serialize() for player in self.players]

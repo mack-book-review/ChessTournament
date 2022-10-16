@@ -89,6 +89,9 @@ class Player():
         self.rating = kwargs["rating"]
         Player.COUNT += 1
     
+    def get_full_name(self):
+        return self.first_name + " " + self.last_name
+    
     #check if record already exists
     #add try catch statement
     def save(self):

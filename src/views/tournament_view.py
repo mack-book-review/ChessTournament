@@ -72,3 +72,18 @@ class TournamentView():
             "time_control": time_control,
             "description": description
         }
+    
+    def print_pairing_summary(self,pairing,pairing_num,point_dictionary):
+         p1_fullname = pairing[0].get_full_name()
+         p1_points = str(point_dictionary[pairing[0]])
+         p1_rank = str(pairing[0].rating)
+         p2_fullname = pairing[1].get_full_name()
+         p2_rank = str(pairing[1].rating)
+         p2_points = str(point_dictionary[pairing[0]])
+
+         print(f"Match {pairing_num}: {p1_fullname} (Rank {p1_rank}/Points: {p1_points}) vs. {p2_fullname} (Rank {p2_rank} / Points {p2_points})")
+    
+    def print_all_pairings_summary(self,pairings,point_dictionary):
+        for i in range(1,len(pairings)+1):
+            pairing = pairings[i-1]
+            self.print_pairing_summary(pairing,i,point_dictionary)
